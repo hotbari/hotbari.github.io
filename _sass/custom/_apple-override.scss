@@ -556,19 +556,6 @@ footer {
     }
   }
 
-  // Archive items
-  #archives li {
-    &:nth-child(odd) {
-      background-image: linear-gradient(
-        to left,
-        rgba(28, 28, 30, 0.8),
-        rgba(44, 44, 46, 0.6),
-        rgba(44, 44, 46, 0.6),
-        rgba(44, 44, 46, 0.6),
-        rgba(28, 28, 30, 0.8)
-      );
-    }
-  }
 
   // Categories card
   .categories.card,
@@ -759,5 +746,131 @@ footer {
     color: #0066cc !important;
     border-color: rgba(0, 102, 204, 0.3) !important;
     background-color: rgba(0, 102, 204, 0.04) !important;
+  }
+}
+
+// =============================================
+// ARCHIVE — Colorful timeline design
+// 3-color palette: Purple #6C5CE7, Blue #0984E3, Teal #00B894
+// =============================================
+
+// --- Light mode archive ---
+html:not([data-mode]),
+html[data-mode='light'] {
+  // Fix: override Chirpy's dark gradient on archive items
+  #archives li:nth-child(odd) {
+    background-image: none !important;
+    background-color: rgba(108, 92, 231, 0.04) !important;
+  }
+
+  #archives li:nth-child(even) {
+    background-color: rgba(0, 184, 148, 0.03);
+  }
+}
+
+#archives {
+  // Timeline line — purple gradient
+  ul li::before,
+  .year:first-child::before,
+  .year::before {
+    background: linear-gradient(180deg, #6C5CE7, #0984E3, #00B894) !important;
+    width: 3px !important;
+  }
+
+  // Year dot — purple ring
+  .year::after {
+    border-color: #6C5CE7 !important;
+    background-color: #fff !important;
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.15), 0 0 6px rgba(108, 92, 231, 0.1) !important;
+  }
+
+  // Year text
+  .year {
+    color: #6C5CE7;
+    font-weight: 800;
+  }
+
+  // Post node dot — blue
+  a::before {
+    background-color: #0984E3 !important;
+    box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.12) !important;
+  }
+
+  // Date text — teal accent
+  .date.day {
+    color: #00B894;
+    font-weight: 700;
+  }
+
+  .date.month {
+    color: #0984E3 !important;
+  }
+
+  // Post link
+  a:not(::before) {
+    color: var(--text-color);
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #6C5CE7 !important;
+    }
+  }
+
+  // List items — subtle colored backgrounds with rounded style
+  ul li {
+    border-radius: 8px;
+    margin-bottom: 2px;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: rgba(108, 92, 231, 0.06) !important;
+      background-image: none !important;
+    }
+  }
+}
+
+// --- Dark mode archive ---
+[data-mode='dark'] {
+  #archives {
+    .year {
+      color: #a29bfe;
+    }
+
+    .year::after {
+      border-color: #a29bfe !important;
+      background-color: var(--main-bg) !important;
+      box-shadow: 0 0 0 3px rgba(162, 155, 254, 0.2), 0 0 8px rgba(162, 155, 254, 0.15) !important;
+    }
+
+    a::before {
+      background-color: #74b9ff !important;
+      box-shadow: 0 0 0 3px rgba(116, 185, 255, 0.15) !important;
+    }
+
+    .date.day {
+      color: #55efc4;
+    }
+
+    .date.month {
+      color: #74b9ff !important;
+    }
+
+    a:not(::before):hover {
+      color: #a29bfe !important;
+    }
+
+    li:nth-child(odd) {
+      background-image: none !important;
+      background-color: rgba(162, 155, 254, 0.06) !important;
+    }
+
+    li:nth-child(even) {
+      background-color: rgba(85, 239, 196, 0.03);
+    }
+
+    li:hover {
+      background-color: rgba(162, 155, 254, 0.1) !important;
+      background-image: none !important;
+    }
   }
 }
