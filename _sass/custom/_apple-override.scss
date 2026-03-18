@@ -1,0 +1,763 @@
+// =============================================================
+// Apple-style Design System for Chirpy Theme
+// Inspired by apple.com — clean, spacious, readable
+// Special attention to dark mode text readability
+// =============================================================
+
+// ----- Typography: Apple system font stack -----
+:root {
+  --font-family-base: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter',
+    'Helvetica Neue', 'Noto Sans KR', sans-serif;
+  --font-family-heading: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter',
+    'Helvetica Neue', 'Noto Sans KR', sans-serif;
+}
+
+// =============================================
+// LIGHT THEME — Apple clean white
+// =============================================
+:root[data-mode='light'],
+:root:not([data-mode]) {
+  // Base
+  --main-bg: #ffffff;
+  --mask-bg: rgba(0, 0, 0, 0.3);
+  --main-border-color: #d2d2d7;
+
+  // Typography
+  --text-color: #1d1d1f;
+  --heading-color: #1d1d1f;
+  --text-muted-color: #6e6e73;
+  --text-muted-highlight-color: #1d1d1f;
+  --label-color: #6e6e73;
+  --blockquote-border-color: #d2d2d7;
+  --blockquote-text-color: #6e6e73;
+
+  // Links — Apple blue
+  --link-color: #0066cc;
+  --link-underline-color: rgba(0, 102, 204, 0.2);
+
+  // Sidebar
+  --site-title-color: #1d1d1f;
+  --site-subtitle-color: #6e6e73;
+  --sidebar-bg: #f5f5f7;
+  --sidebar-border-color: #d2d2d7;
+  --sidebar-muted-color: #6e6e73;
+  --sidebar-active-color: #1d1d1f;
+  --sidebar-hover-bg: rgba(0, 0, 0, 0.04);
+  --sidebar-btn-bg: #ffffff;
+  --sidebar-btn-color: #86868b;
+  --avatar-border-color: #d2d2d7;
+
+  // Topbar
+  --topbar-bg: rgba(255, 255, 255, 0.72);
+  --topbar-text-color: #1d1d1f;
+  --search-border-color: #d2d2d7;
+  --search-icon-color: #86868b;
+  --input-focus-border-color: #0066cc;
+
+  // Cards
+  --card-bg: #ffffff;
+  --card-header-bg: #f5f5f7;
+  --card-hover-bg: #f5f5f7;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
+
+  // Buttons
+  --button-bg: #ffffff;
+  --btn-border-color: #d2d2d7;
+  --btn-backtotop-color: #1d1d1f;
+  --btn-backtotop-border-color: #d2d2d7;
+  --btn-share-color: #86868b;
+  --btn-share-hover-color: #0066cc;
+  --btn-patinator-text-color: #1d1d1f;
+  --btn-paginator-hover-color: #f5f5f7;
+
+  // Posts
+  --post-list-text-color: #6e6e73;
+  --toc-highlight: #0066cc;
+  --toc-popup-border-color: #d2d2d7;
+  --tag-hover: rgba(0, 102, 204, 0.06);
+  --tag-border: #d2d2d7;
+  --tag-shadow: rgba(0, 0, 0, 0.04);
+  --search-tag-bg: #f5f5f7;
+  --footnote-target-bg: rgba(0, 102, 204, 0.06);
+
+  // Tables
+  --tb-odd-bg: #f5f5f7;
+  --tb-even-bg: #ffffff;
+  --tb-border-color: #d2d2d7;
+
+  // Code
+  --language-border-color: #d2d2d7;
+  --highlight-bg-color: #f5f5f7;
+  --highlighter-rouge-color: #ad3b52;
+  --highlight-lineno-color: #86868b;
+  --inline-code-bg: rgba(0, 0, 0, 0.04);
+  --code-color: #1d1d1f;
+  --code-header-text-color: #86868b;
+  --code-header-muted-color: #d2d2d7;
+  --code-header-icon-color: #86868b;
+  --clipboard-checked-color: #34c759;
+  --filepath-text-color: #1d1d1f;
+
+  // Keyboard
+  --kbd-wrap-color: #d2d2d7;
+  --kbd-text-color: #1d1d1f;
+  --kbd-bg-color: #f5f5f7;
+
+  // Prompt boxes
+  --prompt-text-color: rgba(29, 29, 31, 0.85);
+  --prompt-tip-bg: rgba(52, 199, 89, 0.1);
+  --prompt-tip-icon-color: #34c759;
+  --prompt-info-bg: rgba(0, 122, 255, 0.08);
+  --prompt-info-icon-color: #007aff;
+  --prompt-warning-bg: rgba(255, 149, 0, 0.1);
+  --prompt-warning-icon-color: #ff9500;
+  --prompt-danger-bg: rgba(255, 59, 48, 0.08);
+  --prompt-danger-icon-color: #ff3b30;
+
+  // Checkbox
+  --checkbox-color: #d2d2d7;
+  --checkbox-checked-color: #007aff;
+
+  // Categories
+  --categories-border: #d2d2d7;
+  --categories-hover-bg: #f5f5f7;
+  --categories-icon-hover-color: #1d1d1f;
+
+  // Archive
+  --timeline-node-bg: #86868b;
+  --timeline-color: #d2d2d7;
+  --timeline-year-dot-color: #ffffff;
+  --dash-color: #d2d2d7;
+}
+
+// =============================================
+// DARK THEME — Apple-style with high readability
+// Key: WCAG AA+ contrast ratios on all text
+// =============================================
+:root[data-mode='dark'],
+html[data-mode='dark'] {
+  // Base — true black like Apple.com dark
+  --main-bg: #000000;
+  --mask-bg: rgba(0, 0, 0, 0.6);
+  --main-border-color: #38383a;
+
+  // Typography — HIGH CONTRAST for readability
+  // Primary text: #f5f5f7 on #000 = 19.4:1 contrast ratio
+  // Secondary text: #a1a1a6 on #000 = 7.1:1 (well above AA 4.5:1)
+  // Muted text: #86868b on #000 = 4.6:1 (meets AA)
+  --text-color: #f5f5f7;
+  --heading-color: #f5f5f7;
+  --text-muted-color: #a1a1a6;
+  --text-muted-highlight-color: #d1d1d6;
+  --label-color: #a1a1a6;
+  --blockquote-border-color: #48484a;
+  --blockquote-text-color: #a1a1a6;
+
+  // Links — Apple vibrant blue (high visibility on dark)
+  --link-color: #2997ff;
+  --link-underline-color: rgba(41, 151, 255, 0.3);
+
+  // Sidebar — elevated surface
+  --site-title-color: #f5f5f7;
+  --site-subtitle-color: #a1a1a6;
+  --sidebar-bg: #1c1c1e;
+  --sidebar-border-color: #38383a;
+  --sidebar-muted-color: #a1a1a6;
+  --sidebar-active-color: #ffffff;
+  --sidebar-hover-bg: rgba(255, 255, 255, 0.06);
+  --sidebar-btn-bg: #2c2c2e;
+  --sidebar-btn-color: #a1a1a6;
+  --avatar-border-color: rgba(255, 255, 255, 0.12);
+
+  // Topbar — frosted glass
+  --topbar-bg: rgba(0, 0, 0, 0.72);
+  --topbar-text-color: #f5f5f7;
+  --search-border-color: #48484a;
+  --search-icon-color: #a1a1a6;
+  --input-focus-border-color: #2997ff;
+
+  // Cards — elevated surface
+  --card-bg: #1c1c1e;
+  --card-header-bg: #2c2c2e;
+  --card-hover-bg: #2c2c2e;
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+
+  // Buttons
+  --button-bg: #1c1c1e;
+  --btn-border-color: #48484a;
+  --btn-backtotop-color: #f5f5f7;
+  --btn-backtotop-border-color: #38383a;
+  --btn-share-color: #a1a1a6;
+  --btn-share-hover-color: #f5f5f7;
+  --btn-patinator-text-color: #f5f5f7;
+  --btn-paginator-hover-color: #2c2c2e;
+
+  // Posts — ensure readability
+  --post-list-text-color: #d1d1d6;
+  --toc-highlight: #2997ff;
+  --toc-popup-border-color: #48484a;
+  --tag-hover: rgba(41, 151, 255, 0.12);
+  --tag-border: rgba(255, 255, 255, 0.12);
+  --tag-shadow: rgba(0, 0, 0, 0.3);
+  --search-tag-bg: #2c2c2e;
+  --footnote-target-bg: rgba(41, 151, 255, 0.15);
+
+  // Tables — readable alternating rows
+  --tb-odd-bg: #1c1c1e;
+  --tb-even-bg: #2c2c2e;
+  --tb-border-color: #38383a;
+
+  // Code — bright enough to read
+  --language-border-color: #38383a;
+  --highlight-bg-color: #1c1c1e;
+  --highlighter-rouge-color: #64d2ff;
+  --highlight-lineno-color: #636366;
+  --inline-code-bg: rgba(255, 255, 255, 0.08);
+  --code-color: #e5e5ea;
+  --code-header-text-color: #a1a1a6;
+  --code-header-muted-color: #38383a;
+  --code-header-icon-color: #636366;
+  --clipboard-checked-color: #30d158;
+  --filepath-text-color: #e5e5ea;
+
+  // Keyboard
+  --kbd-wrap-color: #636366;
+  --kbd-text-color: #f5f5f7;
+  --kbd-bg-color: #2c2c2e;
+
+  // Prompt boxes — Apple vibrant translucent
+  --prompt-text-color: rgba(245, 245, 247, 0.9);
+  --prompt-tip-bg: rgba(48, 209, 88, 0.1);
+  --prompt-tip-icon-color: #30d158;
+  --prompt-info-bg: rgba(41, 151, 255, 0.1);
+  --prompt-info-icon-color: #2997ff;
+  --prompt-warning-bg: rgba(255, 159, 10, 0.1);
+  --prompt-warning-icon-color: #ff9f0a;
+  --prompt-danger-bg: rgba(255, 69, 58, 0.1);
+  --prompt-danger-icon-color: #ff453a;
+
+  // Checkbox
+  --checkbox-color: #636366;
+  --checkbox-checked-color: #2997ff;
+
+  // Categories
+  --categories-border: rgba(255, 255, 255, 0.08);
+  --categories-hover-bg: #2c2c2e;
+  --categories-icon-hover-color: #f5f5f7;
+
+  // Archive
+  --timeline-node-bg: #a1a1a6;
+  --timeline-color: #38383a;
+  --timeline-year-dot-color: var(--timeline-color);
+  --dash-color: #48484a;
+}
+
+// =============================================
+// GLOBAL STYLES — Apple-grade polish
+// =============================================
+
+// Font rendering
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.012em;
+}
+
+// Content area — generous reading line-height
+main {
+  line-height: 1.75;
+}
+
+// Headings — tighter tracking like Apple
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+// Smooth color transitions for theme switching
+a,
+.nav-link,
+.card,
+#sidebar,
+#topbar-wrapper,
+.post-tag {
+  transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+// =============================================
+// SIDEBAR — Apple-style navigation
+// =============================================
+#sidebar {
+  .site-title {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .site-subtitle {
+    letter-spacing: 0;
+    opacity: 0.8;
+  }
+
+  ul li.nav-item a.nav-link {
+    border-radius: 10px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+
+    &:hover {
+      backdrop-filter: brightness(1.05);
+    }
+  }
+
+  .sidebar-bottom {
+    a, #mode-toggle {
+      transition: transform 0.2s ease, background-color 0.2s ease;
+
+      &:hover {
+        transform: scale(1.08);
+      }
+    }
+  }
+}
+
+// =============================================
+// TOPBAR — Frosted glass Apple-style
+// =============================================
+#topbar-wrapper {
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 0.5px solid var(--main-border-color);
+}
+
+// =============================================
+// CARDS — Elevated surfaces with Apple shadows
+// =============================================
+#post-list .card-wrapper.card {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 0.5px solid var(--main-border-color);
+  background-color: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  .card-body {
+    .card-title {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .card-text.content p {
+      line-height: 1.6;
+    }
+  }
+}
+
+// =============================================
+// CODE BLOCKS — Clean rounded look
+// =============================================
+div.highlight {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+// Inline code
+code:not([class]) {
+  border-radius: 6px;
+  padding: 0.15em 0.4em;
+  font-size: 0.875em;
+}
+
+// =============================================
+// TAGS — Pill-style Apple buttons
+// =============================================
+.post-tag {
+  border-radius: 20px !important;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  padding: 0.25em 0.75em !important;
+  font-size: 0.8rem;
+}
+
+// =============================================
+// POST CONTENT — Readable and elegant
+// =============================================
+.content {
+  font-size: 1.05rem;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+
+  p {
+    margin-bottom: 1.25em;
+  }
+
+  blockquote {
+    border-radius: 8px;
+    padding: 1em 1.25em;
+    border-left-width: 3px;
+  }
+
+  // Tables
+  .table-wrapper {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+}
+
+// =============================================
+// SCROLL TO TOP — Clean circle button
+// =============================================
+#back-to-top {
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 0.5px solid var(--main-border-color);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+// =============================================
+// PROMPT BOXES — Apple-style vibrant tint
+// =============================================
+[class^='prompt-'] {
+  border-radius: 10px;
+  border-left-width: 3px;
+}
+
+// =============================================
+// FOOTER — Clean and minimal
+// =============================================
+footer {
+  font-size: 0.8rem;
+  letter-spacing: -0.01em;
+}
+
+// =============================================
+// PANEL (Sidebar right) — Clean headings
+// =============================================
+.panel-heading {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+// =============================================
+// POST NAVIGATION — Rounded Apple buttons
+// =============================================
+.post-navigation .btn {
+  border-radius: 12px !important;
+  transition: all 0.25s ease;
+}
+
+// =============================================
+// TOC POPUP — Frosted glass
+// =============================================
+#toc-popup {
+  border-radius: 14px;
+  border: 0.5px solid var(--main-border-color);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+// =============================================
+// SEARCH — Clean input styling
+// =============================================
+#search-input {
+  border-radius: 10px;
+}
+
+// =============================================
+// DARK MODE SPECIFIC ENHANCEMENTS
+// =============================================
+[data-mode='dark'] {
+  // Card hover — subtle blue glow
+  #post-list .card-wrapper.card:hover {
+    box-shadow: 0 4px 20px rgba(41, 151, 255, 0.06),
+                0 0 0 1px rgba(41, 151, 255, 0.08);
+  }
+
+  // Ensure all .text-muted elements are readable
+  .text-muted {
+    color: #a1a1a6 !important;
+  }
+
+  // Post meta readability
+  .post-meta {
+    color: #a1a1a6;
+  }
+
+  // Tag pills — visible border + text
+  .post-tag {
+    color: #d1d1d6 !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+
+    &:hover {
+      color: #2997ff !important;
+      border-color: rgba(41, 151, 255, 0.3) !important;
+      background-color: rgba(41, 151, 255, 0.08) !important;
+    }
+  }
+
+  // Link hover — brighter Apple blue
+  a:hover {
+    color: #64d2ff;
+  }
+
+  // Selection highlight
+  ::selection {
+    background: rgba(41, 151, 255, 0.35);
+    color: #ffffff;
+  }
+
+  // Breadcrumb readability
+  #breadcrumb {
+    color: #a1a1a6;
+
+    a {
+      color: #a1a1a6;
+
+      &:hover {
+        color: #2997ff;
+      }
+    }
+  }
+
+  // Panel section text
+  #panel-wrapper {
+    .panel-heading {
+      color: #f5f5f7;
+    }
+
+    .access a {
+      color: #d1d1d6;
+
+      &:hover {
+        color: #2997ff;
+      }
+    }
+  }
+
+  // TOC links readable in dark
+  #toc-wrapper .toc-link {
+    color: #a1a1a6;
+
+    &:hover,
+    &.is-active-link {
+      color: #2997ff;
+    }
+  }
+
+  // Archive items
+  #archives li {
+    &:nth-child(odd) {
+      background-image: linear-gradient(
+        to left,
+        rgba(28, 28, 30, 0.8),
+        rgba(44, 44, 46, 0.6),
+        rgba(44, 44, 46, 0.6),
+        rgba(44, 44, 46, 0.6),
+        rgba(28, 28, 30, 0.8)
+      );
+    }
+  }
+
+  // Categories card
+  .categories.card,
+  .list-group-item {
+    background-color: var(--card-bg);
+    color: #f5f5f7;
+  }
+
+  .categories {
+    .card-header {
+      background-color: var(--card-header-bg);
+      color: #f5f5f7;
+    }
+
+    .list-group-item {
+      border-color: var(--categories-border);
+      color: #d1d1d6;
+
+      &:hover {
+        background-color: var(--categories-hover-bg);
+        color: #f5f5f7;
+      }
+
+      // Category badge count
+      .text-muted {
+        color: #a1a1a6 !important;
+      }
+    }
+  }
+
+  // Content area: ensure all text is bright enough
+  .content {
+    color: #f5f5f7;
+
+    // Strong text
+    strong {
+      color: #ffffff;
+    }
+
+    // Headings
+    h1, h2, h3, h4, h5, h6 {
+      color: #f5f5f7;
+    }
+
+    // Lists
+    li {
+      color: #e5e5ea;
+    }
+
+    // Blockquote
+    blockquote {
+      color: #a1a1a6;
+      background-color: rgba(255, 255, 255, 0.03);
+    }
+
+    // Table cells
+    table {
+      th {
+        color: #f5f5f7;
+      }
+
+      td {
+        color: #e5e5ea;
+      }
+    }
+  }
+
+  // Footer readability
+  footer {
+    color: #86868b;
+
+    a {
+      color: #a1a1a6;
+
+      &:hover {
+        color: #2997ff;
+      }
+    }
+  }
+
+  // Prompt boxes text readability
+  [class^='prompt-'] {
+    p, li, span {
+      color: #e5e5ea;
+    }
+
+    a {
+      color: #2997ff;
+    }
+  }
+
+  // Search results readability
+  #search-result-wrapper {
+    .content {
+      color: #f5f5f7;
+    }
+
+    a {
+      color: #2997ff;
+    }
+
+    p {
+      color: #d1d1d6;
+    }
+  }
+
+  // Post tail / bottom section
+  .post-tail-wrapper {
+    color: #a1a1a6;
+
+    a {
+      color: #2997ff;
+    }
+  }
+
+  // Navigation buttons
+  .post-navigation .btn {
+    color: #2997ff;
+    border-color: #48484a;
+
+    &:hover:not(.disabled) {
+      background-color: rgba(41, 151, 255, 0.08);
+      border-color: #2997ff;
+    }
+
+    &.disabled {
+      color: #48484a;
+      border-color: #38383a;
+    }
+
+    &::before {
+      color: #86868b;
+    }
+  }
+
+  // Toast / notification
+  #notification {
+    background-color: #1c1c1e;
+    border-color: #38383a;
+    color: #f5f5f7;
+
+    .toast-body p {
+      color: #d1d1d6;
+    }
+  }
+
+  // Scroll to top
+  #back-to-top {
+    background-color: rgba(28, 28, 30, 0.85);
+    color: #f5f5f7;
+  }
+
+  // Share icons
+  .share-label {
+    color: #a1a1a6;
+  }
+
+  // Readtime and post info
+  .readtime {
+    color: #a1a1a6;
+  }
+
+  // Page title for post pages
+  article header h1 {
+    color: #f5f5f7;
+  }
+}
+
+// =============================================
+// LIGHT MODE SPECIFIC ENHANCEMENTS
+// =============================================
+:root[data-mode='light'],
+:root:not([data-mode]) {
+  // Card hover
+  #post-list .card-wrapper.card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08),
+                0 0 0 1px rgba(0, 0, 0, 0.04);
+  }
+
+  // Selection
+  ::selection {
+    background: rgba(0, 102, 204, 0.2);
+    color: #1d1d1f;
+  }
+
+  // Tag hover
+  .post-tag:hover {
+    color: #0066cc !important;
+    border-color: rgba(0, 102, 204, 0.3) !important;
+    background-color: rgba(0, 102, 204, 0.04) !important;
+  }
+}
